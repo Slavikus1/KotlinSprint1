@@ -5,4 +5,5 @@ fun main(){
    val thanksForBuying: String = "Thanks for buying:)"
    println(numberOfOrders)
    println(thanksForBuying)
+   println()
 }
