@@ -1,9 +1,13 @@
 package lesson2
 
 fun main() {
-    val timeStart = 39 + (9 * 60)
-    val timeTravel = 457
-    val timeFinish = (timeStart + timeTravel) / 60.0
-    //println(timeFinish)
-    println("Поезд приезжает в 17:26")
+    val startHour = 9
+    val startMinute = 39
+    val minInTravel = 457
+    val findMinutes = 60
+    val findHours = 60
+    val allTimeMinutes = minInTravel + startMinute + (startHour * findMinutes)
+    val arriveHour = allTimeMinutes / findHours
+    val arriveMinute = allTimeMinutes % arriveHour
+    print("Прибытие в $arriveHour:$arriveMinute")
 }
