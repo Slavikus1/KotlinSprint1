@@ -10,6 +10,18 @@ fun main() {
     val cargoTwoWeight = 50
     val cargoTwoCapacity = 100
 
-    println("Груз с весом $cargoOneWeight кг и объемом $cargoOneCapacity л соответствует категории 'Average':${(cargoOneWeight >= AVERAGE_MIN_WEIGHT && cargoOneWeight <= AVERAGE_MAX_WEIGHT && cargoOneCapacity < AVERAGE_MAX_CAPACITY)}.")
-    println("Груз с весом $cargoTwoWeight кг и объемом $cargoTwoCapacity л соответствует категории 'Average':${(cargoTwoWeight >= AVERAGE_MIN_WEIGHT && cargoTwoWeight <= AVERAGE_MAX_WEIGHT && cargoTwoCapacity < AVERAGE_MAX_CAPACITY)}.")
+    println(
+        "Груз с весом $cargoOneWeight кг и объемом $cargoOneCapacity л соответствует категории 'Average':" +
+                "${
+                    (cargoOneWeight >= AVERAGE_MIN_WEIGHT && cargoOneWeight <=
+                            AVERAGE_MAX_WEIGHT && cargoOneCapacity < AVERAGE_MAX_CAPACITY)
+                }."
+    )
+    println(
+        "Груз с весом $cargoTwoWeight кг и объемом $cargoTwoCapacity л соответствует категории 'Average':" +
+                "${
+                    (cargoTwoWeight >= AVERAGE_MIN_WEIGHT && cargoTwoWeight <=
+                            AVERAGE_MAX_WEIGHT && cargoTwoCapacity < AVERAGE_MAX_CAPACITY)
+                }."
+    )
 }
