@@ -25,15 +25,15 @@ fun main() {
     val answerAboutWeatherConditions = readLine()
     val isCurrentWeatherConditions = answerAboutWeatherConditions.toBoolean()
 
-    if ((isCurrentDamage == false) && (currentNumberOfCrew in (MINIMAL_NUMBER_OF_CREW..RECOMMENDED_NUMBER_OF_CREW)) &&
-        (currentFood >= MINIMAL_NUMBER_OF_FOODBOX) && (isCurrentWeatherConditions != true || isCurrentWeatherConditions == true)
-    ) {
-        println("Корабль может отправиться в плавание")
-    } else if ((isCurrentDamage == true) && (currentNumberOfCrew == RECOMMENDED_NUMBER_OF_CREW) &&
-        (isCurrentWeatherConditions == true) && (currentFood >= MINIMAL_NUMBER_OF_FOODBOX)
-    ) {
-        println("Корабль может отправиться в плавание")
-    } else println("Корабль не может отправиться в долгосрочное плавание")
-
-
+    if ((isCurrentDamage == false) &&
+        (currentNumberOfCrew in (MINIMAL_NUMBER_OF_CREW..RECOMMENDED_NUMBER_OF_CREW)) &&
+        (currentFood >= MINIMAL_NUMBER_OF_FOODBOX) &&
+        (isCurrentWeatherConditions != true || isCurrentWeatherConditions == true)
+    ) println("Корабль может отправиться в плавание")
+    else if ((isCurrentDamage == true) &&
+        (currentNumberOfCrew == RECOMMENDED_NUMBER_OF_CREW) &&
+        (isCurrentWeatherConditions == true) &&
+        (currentFood >= MINIMAL_NUMBER_OF_FOODBOX)
+    ) println("Корабль может отправиться в плавание")
+    else println("Корабль не может отправиться в долгосрочное плавание")
 }
