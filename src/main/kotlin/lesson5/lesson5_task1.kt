@@ -3,15 +3,15 @@ package lesson5
 fun main() {
     println("Докажите что вы не бот! Введите число:")
 
-    val numberA = readLine()!!.toInt()
+    val numberA = readln().toInt()
 
     println("Введите еще одно число:")
 
-    val numberB = readLine()!!.toInt()
+    val numberB = readln().toInt()
 
     println("Сложите ваши числа и запишите реузльтат!")
 
-    val result = readLine()!!.toInt()
+    val result = readln().toInt()
 
     when {
         (result == (numberA + numberB)) -> println("Добро пожаловать!")
