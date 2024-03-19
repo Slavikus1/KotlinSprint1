@@ -6,7 +6,7 @@ fun main() {
 
     println("Введите ваш год рождения:")
 
-    val age = readLine()!!.toInt()
+    val age = readln().toInt()
     val currentYear = 2024
 
     when {
