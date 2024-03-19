@@ -13,11 +13,13 @@ fun main() {
     val secondChoosen = readln().toInt()
 
     when {
-        (firstChoosen == rightFirstNumber) &&
-                (secondChoosen == rightSecondNumber) -> println("Поздравляем! Вы выиграли главный приз!")
+        ((firstChoosen == rightFirstNumber) || (firstChoosen == rightSecondNumber)) &&
+                ((secondChoosen == rightSecondNumber) || (secondChoosen == rightFirstNumber))
+        -> println("Поздравляем! Вы выиграли главный приз!")
 
-        (firstChoosen == rightFirstNumber) ||
-                (secondChoosen == rightSecondNumber) -> println("Вы выиграли утешительный приз!")
+        ((firstChoosen == rightFirstNumber) || (firstChoosen == rightSecondNumber)) ||
+                ((secondChoosen == rightSecondNumber) || (secondChoosen == rightFirstNumber))
+        -> println("Вы выиграли утешительный приз!")
 
         else -> println("Неудача!")
     }
