@@ -5,7 +5,7 @@ fun main() {
     var seconds = readln().toInt()
     var resultSave = seconds
 
-    while (seconds > 0) {
+    while (seconds > -1) {
         println(seconds--)
         Thread.sleep(1000)
     }
