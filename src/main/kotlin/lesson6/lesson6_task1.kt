@@ -9,13 +9,11 @@ fun main() {
 
     do {
         println("Введите ваши данные для входа. Логин:")
-        var enteredLogin = readln()
+        val enteredLogin = readln()
 
         println("Пароль:")
-        var enteredPassword = readln()
+        val enteredPassword = readln()
 
-        if ((enteredLogin == regLogin) && (enteredPassword == regPassword)) {
-            println("Welcome!")
-        }
     } while ((enteredLogin != regLogin) && (enteredPassword != regPassword))
+    println("Welcome!")
 }
