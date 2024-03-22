@@ -9,7 +9,7 @@ fun main() {
 
     do {
         println("Докажите что вы не бот! Сложите $int1 и $int2:")
-        var result = readln().toInt()
+        val result = readln().toInt()
 
         if (result == (int1 + int2)) {
             println("Добро пожаловать!")
