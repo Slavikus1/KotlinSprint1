@@ -5,10 +5,6 @@ import kotlin.random.Random
 fun main() {
     println("Введите число (не меньше 6), которое будет являться длинной пароля:")
     var userPasswordSize = readln().toInt()
-    while (userPasswordSize < 6) {
-        println("Пожалуйста, введите число не меньше 6:")
-        userPasswordSize = readln().toInt()
-    }
     val firstPasswordNumber = 1
     val passwordSizeRange = firstPasswordNumber..userPasswordSize
 
@@ -22,8 +18,12 @@ fun main() {
     var numbersList = numbers.random().toString()
 
     var randomList = listOf(numbersList, charsList, upperCharsList)
-
     var password = ""
+
+    while (userPasswordSize < 6) {
+        println("Пожалуйста, введите число не меньше 6:")
+        userPasswordSize = readln().toInt()
+    }
 
     for (i in passwordSizeRange) {
         password += randomList.random()
