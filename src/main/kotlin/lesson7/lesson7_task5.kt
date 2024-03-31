@@ -4,30 +4,29 @@ import kotlin.random.Random
 
 fun main() {
     println("Введите число (не меньше 6), которое будет являться длинной пароля:")
+    val minPasswordLength = 6
     var userPasswordSize = readln().toInt()
-    val chars = 'a'..'z'
-    val upperChars = 'A'..'Z'
-    val numbers = 0..9
-    var password = ""
-
-    while (userPasswordSize < 6) {
-        println("Пожалуйста, введите число не меньше 6:")
+    while (userPasswordSize < minPasswordLength) {
+        println("Пароль должен быть не меньше 6 символов. Введите ваше число:")
         userPasswordSize = readln().toInt()
     }
 
-    while (password.length != userPasswordSize) {
-        password += chars.random()
-        if (password.length == userPasswordSize) {
-            break
-        }
-        password += upperChars.random()
-        if (password.length == userPasswordSize) {
-            break
-        }
-        password += numbers.random()
-        if (password.length == userPasswordSize) {
-            break
-        }
+    val chars = 'a'..'z'
+    val upperChars = 'A'..'Z'
+    val numbers = 0..9
+    val allChars = chars + numbers + upperChars
+    val password = mutableListOf<String>()
+
+    password.add(chars.random().toString())
+    password.add(upperChars.random().toString())
+    password.add(numbers.random().toString())
+
+    while (password.size != userPasswordSize) {
+        password.add(allChars.random().toString())
     }
-    println("Ваш пароль: $password")
+    password.shuffle()
+
+    for (i in password) {
+        print(i)
+    }
 }
