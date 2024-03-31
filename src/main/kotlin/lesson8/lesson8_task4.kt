@@ -1,23 +1,20 @@
 package lesson8
 
 fun main() {
-    val ingredientsArray = arrayOf("cucumber", "carrot", "meat", "egg")
+    val ingredientsArray = arrayOf("огурец", "морковка", "мясо", "яйцо")
     println(ingredientsArray)
 
-    println("which ingredient you would like to replace?")
+    println("Какой ингридиент вы хотели бы заменить?")
     val usersChoice = readln()
 
-    for (i in ingredientsArray) {
-        if (usersChoice == i) {
-            val index = ingredientsArray.indexOf(i)
-            println("enter new ingredient: ")
-
-            val newIngredient = readln()
-            ingredientsArray[index] = newIngredient
-
-            println("Done! You have saved new ingredients list: ${ingredientsArray.joinToString()}")
-            return
-        }
+    if (ingredientsArray.indexOf(usersChoice) == -1) {
+        println("Такого ингредиента нет в списке.")
+        return
+    } else {
+        println("Введите новый ингридиент:")
+        val newIngredient = readln()
+        val getIndex = ingredientsArray.indexOf(usersChoice)
+        ingredientsArray[getIndex] = newIngredient
     }
-    println("You entered unavailable ingredient.")
+    println(ingredientsArray.joinToString())
 }
