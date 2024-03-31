@@ -4,11 +4,7 @@ fun main() {
     val ingredientsArray = arrayOf("рис", "куриная грудка", "помидор", "перец")
     println("Введите ингридиент:")
     val result = readln()
-    ingredientsArray.forEach{element ->
-        if (element == result) {
-            println("Данный ингридиент \"$result\" есть в списке")
-            return
-        }
-    }
-    println("Данного ингридиента \"$result\" нет в списке")
+    if (ingredientsArray.indexOf(result) == -1) {
+        println("Такого ингредиента \"$result\" нет в списке.")
+    } else println("Такой ингридиент $result в списке есть.")
 }
