@@ -6,15 +6,16 @@ fun main() {
 
     println("Какой ингридиент вы хотели бы заменить?")
     val usersChoice = readln()
+    val index = ingredientsArray.indexOf(usersChoice)
 
-    if (ingredientsArray.indexOf(usersChoice) == -1) {
-        println("Такого ингредиента нет в списке.")
-        return
-    } else {
+
+    if (index in ingredientsArray.indices) {
         println("Введите новый ингридиент:")
         val newIngredient = readln()
-        val getIndex = ingredientsArray.indexOf(usersChoice)
-        ingredientsArray[getIndex] = newIngredient
+        ingredientsArray[index] = newIngredient
+    } else {
+        println("Такого ингредиента нет в списке.")
+        return
     }
     println(ingredientsArray.joinToString())
 }
