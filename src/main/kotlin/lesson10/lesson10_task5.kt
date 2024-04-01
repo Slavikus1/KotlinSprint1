@@ -6,10 +6,7 @@ const val BASKET = "наушники, часы, будильник, весы"
 const val TOKEN_LENGTH = 32
 
 fun main() {
-    val token = authorization()
-    if (token == null) println("Authorization failed")
-    else getBasket(token = token)
-
+    getBasket()
 }
 
 fun authorization(): String? {
@@ -38,6 +35,8 @@ fun authorization(): String? {
     }
 }
 
-fun getBasket(token: String) {
-    println(BASKET)
+fun getBasket() {
+    val token = authorization()
+    if (token == null) println("Authorization failed")
+    else println(BASKET)
 }
