@@ -1,6 +1,6 @@
 package lesson9
 
-fun main(){
+fun main() {
     val ingredientsList = mutableListOf("картошка", "мясо", "соль")
 
     println("В рецепте есть базовые ингридиенты: ${ingredientsList.joinToString()}.")
