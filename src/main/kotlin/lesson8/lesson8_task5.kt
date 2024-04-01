@@ -3,13 +3,16 @@ package lesson8
 fun main() {
     println("Укажите планируемое количество ингридиентов:")
     val maxNumberOfIngredients = readln().toInt()
-    val minNumberOfIngredients = 1
-    var arrayOfIngredients: Array<String> = arrayOf()
+    val ingredientsArray = arrayOfNulls<String>(maxNumberOfIngredients)
+    var index = 0
+    var numberOfIngredient = 1
 
-    for (i in minNumberOfIngredients..maxNumberOfIngredients) {
-        println("Введите название ингридиента №$i")
-        val entered = readln()
-        arrayOfIngredients += entered
+    for (i in ingredientsArray) {
+        println("Введите ингридиент №$numberOfIngredient: ")
+        val ingredient = readln()
+        ingredientsArray[index] = ingredient
+        index += 1
+        numberOfIngredient += 1
     }
-    println("Ваш список: ${arrayOfIngredients.joinToString()}")
+    println(ingredientsArray.joinToString())
 }
