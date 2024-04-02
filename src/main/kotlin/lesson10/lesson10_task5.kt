@@ -30,9 +30,8 @@ fun authorization(): String? {
 
     return if (login == LOGIN && password == PASSWORD) {
         token
-    } else {
-        null
-    }
+    } else null
+
 }
 
 fun getBasket() {
