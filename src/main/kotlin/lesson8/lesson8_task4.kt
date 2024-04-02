@@ -4,7 +4,7 @@ fun main() {
     val ingredientsArray = arrayOf("огурец", "морковка", "мясо", "яйцо")
     println(ingredientsArray)
 
-    println("Какой ингридиент вы хотели бы заменить?")
+    println("Какой ингридиент вы хотели бы заменить? ")
     val usersChoice = readln()
     val index = ingredientsArray.indexOf(usersChoice)
 
