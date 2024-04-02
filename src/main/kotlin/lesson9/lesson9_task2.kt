@@ -8,7 +8,7 @@ fun main() {
 
     var newOne = ""
     val answer = readln()
-    if (answer == "Нет" || answer == "нет" || answer == "Не хочу" || answer == "не хочу") return
+    if (answer.equals("Нет", ignoreCase = true) || answer.equals("Не хочу", ignoreCase = true)) return
     else {
         println("Какой ингридиент вы хотите добавить?")
         newOne = readln()
