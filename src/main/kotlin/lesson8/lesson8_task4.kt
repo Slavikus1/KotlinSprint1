@@ -9,13 +9,13 @@ fun main() {
     val index = ingredientsArray.indexOf(usersChoice)
 
 
-    if (index in ingredientsArray.indices) {
+    if (index == -1) {
+        println("Такого ингредиента нет в списке.")
+        return
+    } else {
         println("Введите новый ингридиент:")
         val newIngredient = readln()
         ingredientsArray[index] = newIngredient
-    } else {
-        println("Такого ингредиента нет в списке.")
-        return
     }
     println(ingredientsArray.joinToString())
 }
