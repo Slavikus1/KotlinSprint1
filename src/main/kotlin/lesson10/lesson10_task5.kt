@@ -6,36 +6,36 @@ const val BASKET = "наушники, часы, будильник, весы"
 const val TOKEN_LENGTH = 32
 
 fun main() {
-    getBasket()
+    toGetBasket()
 }
 
-fun authorization(): String? {
-    val chars = 'a'..'z'
-    val numbers = 0..9
-    val allChars = chars + numbers
-    val tokenGenerator = mutableListOf<String>()
-
-    tokenGenerator.add(chars.random().toString())
-    tokenGenerator.add(numbers.random().toString())
-    while (tokenGenerator.size != TOKEN_LENGTH) {
-        tokenGenerator.add(allChars.random().toString())
-    }
-    val token = tokenGenerator.joinToString("")
-
+fun toLogIn(): String? {
     println("Введите логин:")
     val login = readln()
 
     println("Введите пароль:")
     val password = readln()
 
-    return if (login == LOGIN && password == PASSWORD) {
-        token
-    } else null
 
+    return if (login != LOGIN && password != PASSWORD) {
+        null
+    } else {
+        val chars = 'a'..'z'
+        val numbers = 0..9
+        val allChars = chars + numbers
+        var token = ""
+
+        token += (chars.random().toString())
+        token += (numbers.random().toString())
+        while (token.length != TOKEN_LENGTH) {
+            token += allChars.random()
+        }
+        token
+    }
 }
 
-fun getBasket() {
-    val token = authorization()
+fun toGetBasket() {
+    val token = toLogIn()
     if (token == null) println("Authorization failed")
     else println(BASKET)
 }
