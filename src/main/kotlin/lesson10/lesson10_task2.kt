@@ -1,7 +1,16 @@
 package lesson10
 
+import kotlin.system.exitProcess
+
+const val MIN_DATA_RANGE = 4
+
 fun main() {
-    usersDataCheck(login = getLogin(), password = getPassword())
+    val login = getLogin()
+    val password = getPassword()
+
+    checkStringLength(login!!, password!!)
+
+    println("Welcome $login")
 }
 
 fun getLogin(): String? {
@@ -14,13 +23,10 @@ fun getPassword(): String? {
     return readlnOrNull()
 }
 
-fun usersDataCheck(login: String?, password: String?) {
-    val minDataRange = 4
-    if (login != null && login.length < minDataRange) {
-        println("Логин недостаточно длинный. Он должен содержать 4 символа")
-        return
-    } else if (password != null && password.length < minDataRange) {
-        println("Пароль недостаточно длинный. Он должен содержать 4 символа")
-        return
-    } else println("Welcome, $login")
+fun checkStringLength(login: String, password: String) {
+    if (login.length < MIN_DATA_RANGE || password.length < MIN_DATA_RANGE) {
+        println("Логин или пароль недостаточно длинные")
+        exitProcess(1)
+    }
+
 }
