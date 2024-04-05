@@ -8,25 +8,25 @@ fun main() {
     val login = getLogin()
     val password = getPassword()
 
-    checkStringLength(login!!, password!!)
+    if (!checkLength(login) || !checkLength(password)) {
+        println("Логин или пароль недостаточно длинные")
+        return
+    } else println("Welcome!")
+
 
     println("Welcome $login")
 }
 
-fun getLogin(): String? {
+fun getLogin(): String {
     println("Придумайте логин:")
-    return readlnOrNull()
+    return readln()
 }
 
-fun getPassword(): String? {
+fun getPassword(): String {
     println("Придумайте пароль:")
-    return readlnOrNull()
+    return readln()
 }
 
-fun checkStringLength(login: String, password: String) {
-    if (login.length < MIN_DATA_RANGE || password.length < MIN_DATA_RANGE) {
-        println("Логин или пароль недостаточно длинные")
-        exitProcess(1)
-    }
-
+fun checkLength(data: String): Boolean {
+    return data.length >= MIN_DATA_RANGE
 }
