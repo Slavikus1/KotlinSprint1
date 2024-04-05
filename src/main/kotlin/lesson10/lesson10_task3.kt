@@ -5,7 +5,8 @@ fun main() {
 }
 
 fun createPassword(): String {
-    val symbols = charArrayOf('!', '"', '#', '$', '%', '\'', '&', '(', ')', '*', '+', ',', '-', '.', '/', ' ')
+    val symbols = '!'..'/'
+    val allChars = symbols + ' '
     val numbers = 0..9
 
     println("Укажите цифру или число для определения длины вашего пароля: ")
@@ -15,7 +16,7 @@ fun createPassword(): String {
         if ((password.length % 2 == 0)) {
             password += numbers.random()
         } else {
-            password += symbols.random()
+            password += allChars.random()
         }
     }
     return password
