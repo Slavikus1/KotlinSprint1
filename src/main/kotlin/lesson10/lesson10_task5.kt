@@ -1,5 +1,7 @@
 package lesson10
 
+import kotlin.system.exitProcess
+
 const val LOGIN = "Slavikus1"
 const val PASSWORD = "4292xander"
 const val BASKET = "наушники, часы, будильник, весы"
@@ -9,7 +11,7 @@ fun main() {
     toGetBasket()
 }
 
-fun toLogIn(): String? {
+fun toLogIn(): String {
     println("Введите логин:")
     val login = readln()
 
@@ -18,7 +20,8 @@ fun toLogIn(): String? {
 
 
     return if (login != LOGIN && password != PASSWORD) {
-        null
+        println("Authorization failed")
+        exitProcess(1)
     } else {
         val chars = 'a'..'z'
         val numbers = 0..9
@@ -36,6 +39,5 @@ fun toLogIn(): String? {
 
 fun toGetBasket() {
     val token = toLogIn()
-    if (token == null) println("Authorization failed")
-    else println(BASKET)
+    if (token != "") println(BASKET)
 }
