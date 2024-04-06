@@ -10,7 +10,7 @@ fun createPassword(): String {
     val numbers = 0..9
 
     println("Укажите цифру или число для определения длины вашего пароля: ")
-    val lengthOfPassword = readlnOrNull()!!.toInt()
+    val lengthOfPassword = readln().toInt()
     var password = ""
     while (password.length != lengthOfPassword) {
         if ((password.length % 2 == 0)) {
