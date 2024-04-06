@@ -11,7 +11,7 @@ fun main() {
     toGetBasket()
 }
 
-fun toLogIn(): String {
+fun toLogIn(): String? {
     println("Введите логин:")
     val login = readln()
 
@@ -19,9 +19,8 @@ fun toLogIn(): String {
     val password = readln()
 
 
-    return if (login != LOGIN && password != PASSWORD) {
-        println("Authorization failed")
-        exitProcess(1)
+    return if (login != LOGIN || password != PASSWORD) {
+        return null
     } else {
         val chars = 'a'..'z'
         val numbers = 0..9
@@ -39,5 +38,6 @@ fun toLogIn(): String {
 
 fun toGetBasket() {
     val token = toLogIn()
-    if (token != "") println(BASKET)
+    if (token != null) println(BASKET)
+    else println("Authorization failed")
 }
