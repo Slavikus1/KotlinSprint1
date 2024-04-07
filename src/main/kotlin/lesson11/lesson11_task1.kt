@@ -5,10 +5,9 @@ class User(
     val password: String,
     val email: String,
     val uniqueId: String,
-){
+)
 
-}
-fun main(){
+fun main() {
     val kolya = User("Kolya2", "123321", "kolya@mail.ru", "999")
     println(kolya.login)
     println(kolya.email)
