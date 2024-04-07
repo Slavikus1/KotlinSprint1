@@ -7,7 +7,7 @@ class User2(
     val uniqueId: String,
     var bio: String = "",
 ) {
-    fun toShowInfo() {
+    fun showInfo() {
         println(
             """
             Информация о пользователе:
@@ -20,12 +20,12 @@ class User2(
         )
     }
 
-    fun toFullFillBio() {
+    fun fillUserBio() {
         println("Введите текст:")
         bio = readln()
     }
 
-    fun toChangePassword() {
+    fun changePassword() {
         println("Введите текущий пароль:")
         val enteredPassword = readln()
         if (enteredPassword == password) {
@@ -38,7 +38,7 @@ class User2(
 
 fun main() {
     val me = User2("mecool", "me123321", "me@mail.ru", "9090")
-    me.toChangePassword()
+    me.changePassword()
     println()
-    me.toShowInfo()
+    me.showInfo()
 }
