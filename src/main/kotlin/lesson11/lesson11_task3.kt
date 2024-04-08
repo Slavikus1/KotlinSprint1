@@ -12,11 +12,11 @@ class Room(
 
     fun updateStatus(username: Member, newStatus: String) {
         val name = username.nickname
-        username.status = newStatus
-        val status = username.status
-
-        println("Пользователь $name имеет новый статус: $status")
-
+        val memberToFind = listOfMembers.find { it.nickname == name }
+        if (memberToFind != null) {
+            memberToFind.status = newStatus
+            println("Пользователь $name теперь имеет статус $newStatus")
+        } else println("Пользователь $name не найден")
     }
 
     fun showInfo(avatar: Member) {
