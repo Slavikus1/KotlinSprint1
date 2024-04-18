@@ -32,7 +32,7 @@ class Forum(){
 
     fun printThread (){
         allMessages.forEach { message -> val author = allMembers.find { it.memberId == message.authorId }
-            author?.let { println("${message.authorId}: ${message.message}") }
+            author?.let { println("${author.memberName}: ${message.message}") }
         }
     }
 
