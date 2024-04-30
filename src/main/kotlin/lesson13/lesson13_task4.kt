@@ -2,25 +2,36 @@ package lesson13
 
 class DirectoryListBook(
     val name: String,
-    val phoneNumber: Long? = null,
+    val phoneNumber: Long,
     var company: String? = null,
-)
+) {
+    fun printData() {
+        println("name - $name, phone number - $phoneNumber, company - $company")
+    }
+}
 
 fun main() {
-    val phoneBook = mutableListOf<Long>()
-    val contactsList = mutableListOf<DirectoryListBook>(
-        DirectoryListBook("Sam"),
-        DirectoryListBook("Ann", 89183130031, "Apple"),
-        DirectoryListBook("Taddy", 89180303030, "Nokia")
-    )
-    contactsList.forEach {
-        if (it.phoneNumber == null) println("${it.name} не ввел номер телефона")
-        else {
-            it.phoneNumber.toLong()
-            phoneBook.add(it.phoneNumber)
-        }
+    val phoneBook = mutableListOf<DirectoryListBook>()
+
+    println("Введите имя:")
+    val name = readln()
+
+    println("Введите номер телефона:")
+    val phoneNumber = readln()
+    val correctNumber = phoneNumber.toLongOrNull()
+
+    if (correctNumber == null) {
+        println("Номер телефона не указан, запись не будет добавлена.")
+        return
     }
 
-    contactsList.forEach { if (it.company == null) it.company = null }
+    println("Введите название компании:")
+    val company = readlnOrNull()
+
+    val newContact = DirectoryListBook(name, correctNumber, company)
+    phoneBook.add(newContact)
+    newContact.printData()
+
+
 }
 
