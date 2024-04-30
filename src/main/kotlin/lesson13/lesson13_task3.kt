@@ -18,5 +18,6 @@ fun main() {
         DirectoryList("Sam", 89181010101, "Microsoft"),
         DirectoryList("Nicole", 89189090900, "null")
     )
-    phoneBook.forEach { if (it.company != null) println(it.company) }
+    val notNullBook = phoneBook.mapNotNull { it.company }
+    println(notNullBook)
 }
