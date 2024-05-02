@@ -5,7 +5,7 @@ import java.lang.IllegalArgumentException
 class DirectoryListBook(
     val name: String,
     val company: String? = null,
-    var phoneNumber: String = readln(),
+    var phoneNumber: Long,
 ) {
     fun printData() {
         println("$name - name. $phoneNumber - number. $company - company")
@@ -14,20 +14,24 @@ class DirectoryListBook(
 
 fun main() {
     val contactBook = mutableListOf<DirectoryListBook>()
-    val listToCheck = mutableListOf<DirectoryListBook>(
-        DirectoryListBook("Semen", "Amazon"),
-        DirectoryListBook("Ann", "Apple"),
-        DirectoryListBook("Sam")
-    )
-    for (i in listToCheck){
-        val number = i.phoneNumber.toLongOrNull()
-        if (number == null){
-            println("У ${i.name} не указан номер телефона. Запись не будет добавлена.")
-            continue
-        }
-        else contactBook.add(i)
-    }
+    while (contactBook.size != 1){
+        println("Введите имя:")
+        val contactName = readln()
 
+        println("Введите компанию")
+        val contactCompany = readln()
+
+        println("Введите номер телефона")
+        val contactPhoneNumber = readln().toLongOrNull()
+
+        if (contactPhoneNumber == null){
+            println("у $contactName не указан номер телефона. Такая запись не будет добавлена.")
+        }
+        else {
+            val newContact = DirectoryListBook(contactName,contactCompany,contactPhoneNumber)
+            contactBook.add(newContact)
+        }
+    }
     contactBook.forEach { it.printData() }
 }
 
