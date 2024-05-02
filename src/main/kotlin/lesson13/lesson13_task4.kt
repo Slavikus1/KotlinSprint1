@@ -14,7 +14,7 @@ class DirectoryListBook(
 
 fun main() {
     val contactBook = mutableListOf<DirectoryListBook>()
-    while (contactBook.size != 1){
+    while (contactBook.size != 1) {
         println("Введите имя:")
         val contactName = readln()
 
@@ -24,11 +24,10 @@ fun main() {
         println("Введите номер телефона")
         val contactPhoneNumber = readln().toLongOrNull()
 
-        if (contactPhoneNumber == null){
+        if (contactPhoneNumber == null) {
             println("у $contactName не указан номер телефона. Такая запись не будет добавлена.")
-        }
-        else {
-            val newContact = DirectoryListBook(contactName,contactCompany,contactPhoneNumber)
+        } else {
+            val newContact = DirectoryListBook(contactName, contactCompany, contactPhoneNumber)
             contactBook.add(newContact)
         }
     }
