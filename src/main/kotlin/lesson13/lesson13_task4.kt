@@ -4,26 +4,30 @@ import java.lang.IllegalArgumentException
 
 class DirectoryListBook(
     val name: String,
-    var phoneNumber: String?,
-    var company: String? = null,
+    val company: String? = null,
+    var phoneNumber: String = readln(),
 ) {
-    init {
-        println("Введите номер телефона $name:")
-        phoneNumber = readlnOrNull()
-        phoneNumber?.toLong() ?: throw IllegalArgumentException ("Номер не указан. Такая запись не будет добавлена.")
-    }
-
     fun printData() {
-        println("name - $name, phone number - $phoneNumber, company - $company")
+        println("$name - name. $phoneNumber - number. $company - company")
     }
 }
 
 fun main() {
-    val phoneBook = mutableListOf<DirectoryListBook>(
-        DirectoryListBook("Sam", "Ss",),
-        DirectoryListBook("Bob","s", "Apple")
+    val contactBook = mutableListOf<DirectoryListBook>()
+    val listToCheck = mutableListOf<DirectoryListBook>(
+        DirectoryListBook("Semen", "Amazon"),
+        DirectoryListBook("Ann", "Apple"),
+        DirectoryListBook("Sam")
     )
-    phoneBook.forEach { it.printData() }
+    for (i in listToCheck){
+        val number = i.phoneNumber.toLongOrNull()
+        if (number == null){
+            println("У ${i.name} не указан номер телефона. Запись не будет добавлена.")
+            continue
+        }
+        else contactBook.add(i)
+    }
 
+    contactBook.forEach { it.printData() }
 }
 
