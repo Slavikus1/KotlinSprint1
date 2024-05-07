@@ -41,3 +41,12 @@ class NewCargoShip(
         println("грузовой корабль активирует погрузочный кран")
     }
 }
+
+fun main(){
+    val cargo = NewCargoShip()
+    val icebreaker = NewIceBreaker()
+    val liner = NewLiner()
+    cargo.loadShipment()
+    icebreaker.loadShipment()
+    liner.loadShipment()
+}
