@@ -7,12 +7,18 @@ class Chat(
         messages.add(Message(messageText, messageAuthor, messageId = messages.size))
     }
 
-    fun addThreadMessage(messageText: String, messageAuthor: String, parentMessageId: Int = messages.size) {
-        messages.add(ChildMessage(messageText, messageAuthor, messages.size, parentMessageId - 1))
+    fun addThreadMessage(messageText: String, messageAuthor: String, parentMessageId: Int) {
+        messages.add(ChildMessage(messageText, messageAuthor, messages.size, parentMessageId))
     }
 
     fun printChat() {
-        val groupById = messages.groupBy {it.messageId}
+
+       val groupMessages = messages.groupBy {
+            if (it is ChildMessage) {
+                it.parentMessageId
+            } else it.messageId
+        }
+        groupMessages.forEach { println() }
     }
 }
 
@@ -24,11 +30,10 @@ class ChildMessage(text: String, author: String, messageId: Int, val parentMessa
 fun main() {
     val chat = Chat()
     chat.addMessage("Всем здарова народ! Какие планы на майские?", "Паша")
-    chat.addThreadMessage("Здарова, братик. Я на шашлыки", "Митя")
+    chat.addThreadMessage("Здарова, братик. Я на шашлыки", "Митя", 0)
     chat.addMessage("Как проехать в галерею?", "Эмиль")
-    chat.addThreadMessage("на 10-ке", "Костя")
-
-    chat.messages.forEach { println(it.messageId) }
+    chat.addThreadMessage("на 10-ке", "Костя", 1)
+    chat.addThreadMessage("я к родителям", "Коля", 0)
 
     chat.printChat()
 }
