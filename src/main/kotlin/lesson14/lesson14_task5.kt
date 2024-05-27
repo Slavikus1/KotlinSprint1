@@ -35,5 +35,6 @@ fun main() {
     chat.addThreadMessage("на 10-ке", "Костя", 1)
     chat.addThreadMessage("я к родителям", "Коля", 0)
 
+    chat
     chat.printChat()
 }
