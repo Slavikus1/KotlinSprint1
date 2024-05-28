@@ -5,31 +5,30 @@ abstract class WeatherStationStats() {
     abstract fun printInfo()
 }
 
-class Temperature(override var data: Int) : WeatherStationStats(){
+class Temperature(override var data: Int) : WeatherStationStats() {
     override fun printInfo() {
         println("Температура сегодня - $data")
     }
 
 }
 
-class PrecipitationAmount(override val data: Int): WeatherStationStats(){
+class PrecipitationAmount(override val data: Int) : WeatherStationStats() {
     override fun printInfo() {
         println("Осадки сегодня - $data")
     }
 }
 
-class WeatherServer(val data: WeatherStationStats){
-    fun pushDataOnServer(){
-        if (data is Temperature){
-            println("Температура сегодня - ${data.data}")
-        }
-        else if (data is PrecipitationAmount){
-            println("Осадки сегодня - ${data.data}")
+class WeatherServer(val data: WeatherStationStats) {
+    fun pushDataOnServer() {
+        when (data) {
+            is Temperature -> println("Температура сегодня - $data")
+            is PrecipitationAmount -> println("Осадки сегодня - $data")
+            else -> println("Неизвестный тип данных.")
         }
     }
 }
 
-fun main(){
+fun main() {
     val precipitationMonday = PrecipitationAmount(10)
     val temperatureMonday = Temperature(20)
     val serverMonday = WeatherServer(temperatureMonday)
