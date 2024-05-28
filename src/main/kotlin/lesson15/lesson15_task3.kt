@@ -6,11 +6,6 @@ abstract class User {
 
 }
 
-interface Admin {
-    fun deleteUser(user: User)
-    fun deleteMessage()
-}
-
 class CommonUser(override val nickname: String) : User() {
     override fun writeMessage() {
         val message = readln()
@@ -18,19 +13,17 @@ class CommonUser(override val nickname: String) : User() {
     }
 }
 
-class Administrator(override val nickname: String) : User(), Admin {
+class Administrator(override val nickname: String) : User() {
     override fun writeMessage() {
         val message = readln()
         println(message)
     }
 
-    override fun deleteUser(user: User) {
+    fun deleteUser(user: User) {
         println("$nickname удалил пользователя $user")
     }
 
-    override fun deleteMessage() {
+    fun deleteMessage() {
         println("Администратор удалил сообщение")
     }
-
-
 }
