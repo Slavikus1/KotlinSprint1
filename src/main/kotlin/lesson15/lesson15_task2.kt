@@ -33,4 +33,5 @@ fun main() {
     val temperatureMonday = Temperature(20)
     val serverMonday = WeatherServer(temperatureMonday)
     serverMonday.pushDataOnServer()
+
 }
