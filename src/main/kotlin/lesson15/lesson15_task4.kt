@@ -1,9 +1,7 @@
 package lesson15
 
 interface Searchable {
-    fun searchDetails() {
-        println("Выполняется поиск...")
-    }
+    fun searchDetails()
 }
 
 open class Product(
@@ -11,6 +9,10 @@ open class Product(
     val amount: Int,
 )
 
-class MusicInstrument(name: String, amount: Int) : Product(name, amount), Searchable
+class MusicInstrument(name: String, amount: Int) : Product(name, amount), Searchable{
+    override fun searchDetails() {
+        println("Выполняется поиск...")
+    }
+}
 
 class Components(name: String, amount: Int) : Product(name, amount)
