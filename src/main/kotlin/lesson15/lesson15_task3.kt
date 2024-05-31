@@ -2,6 +2,11 @@ package lesson15
 
 abstract class User {
     abstract val nickname: String
+
+    fun readForum(){
+        println("Читаю сообщения")
+    }
+
     fun writeMessage() {
         val message = readln()
         println(message)
