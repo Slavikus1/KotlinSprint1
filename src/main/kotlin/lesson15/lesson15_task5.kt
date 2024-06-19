@@ -30,32 +30,32 @@ class CargoCar(override val maxPassengers: Int = 1, override val maxCargo: Int =
     override var currentCargo: Int = 0
 
     override fun move() {
-        println("Завожу двигатель и еду")
+        println("Завожу двигатель грузовика и еду")
     }
 
     override fun loadCargo(weight: Int) {
-        if (weight + currentCargo <= maxCargo) {
+        if (weight + currentCargo <= maxCargo && weight > 0) {
             println("Загрузил $weight тонны груза")
             currentCargo += weight
         } else println("Невозможно загрузить столько груза")
     }
 
     override fun unloadCargo(weight: Int) {
-        if (weight <= currentCargo) {
+        if (weight in 0..currentCargo) {
             println("Выгрузил $weight тонны груза")
             currentCargo -= weight
         } else println("Невозможно выгрузить столько груза")
     }
 
     override fun loadPassenger(number: Int) {
-        if (number + currentPassengers <= maxPassengers) {
+        if (number + currentPassengers <= maxPassengers && number > 0) {
             println("Загрузил $number пассажира")
             currentPassengers += number
         } else println("Невозможно загрузить столько пассажиров")
     }
 
     override fun unloadPassenger(number: Int) {
-        if (number <= currentPassengers) {
+        if (number in 1..currentPassengers) {
             println("Выгрузил $number пассажира")
             currentPassengers -= number
         } else println("Невозможно выгрузить столько пассажиров")
@@ -66,14 +66,14 @@ class PassengerCar(override val maxPassengers: Int = 3) : PassengerCarrier, Vehi
     override var currentPassengers: Int = 0
 
     override fun loadPassenger(number: Int) {
-        if (number + currentPassengers <= maxPassengers) {
+        if (number + currentPassengers <= maxPassengers && number > 0) {
             println("Загрузил $number пассажира")
             currentPassengers += number
         } else println("Невозможно загрузить столько пассажиров")
     }
 
     override fun unloadPassenger(number: Int) {
-        if (number <= currentPassengers) {
+        if (number in 1..currentPassengers) {
             println("Выгрузил $number пассажира")
             currentPassengers -= number
         } else println("Невозможно выгрузить столько пассажиров")
@@ -95,12 +95,30 @@ fun main(){
     kamaz.loadPassenger(1)
     kamaz.loadCargo(2)
 
+    println()
+
+    println("Кол-во пассажиров в тойоте - ${toyota.currentPassengers}")
+    println("Кол-во пассажиров в ниссане - ${nissan.currentPassengers}")
+    println("Кол-во пассажиров в камазе - ${kamaz.currentPassengers}")
+    println("Кол-во груза в камазе - ${kamaz.currentCargo}")
+
+    println()
+
     toyota.move()
     nissan.move()
     kamaz.move()
+
+    println()
 
     toyota.unloadPassenger(3)
     nissan.unloadPassenger(2)
     kamaz.unloadPassenger(1)
     kamaz.unloadCargo(2)
+
+    println()
+
+    println("Кол-во пассажиров в тойоте - ${toyota.currentPassengers}")
+    println("Кол-во пассажиров в ниссане - ${nissan.currentPassengers}")
+    println("Кол-во пассажиров в камазе - ${kamaz.currentPassengers}")
+    println("Кол-во груза в камазе - ${kamaz.currentCargo}")
 }
