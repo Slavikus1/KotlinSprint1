@@ -2,29 +2,31 @@ package lesson18
 
 import kotlin.random.Random
 
-open class Dice {
+abstract class Dice {
+    abstract val sides: Int
     open fun rollTheDice() {}
 }
 
-class FourSideDice(
-    private val sides: Int = 4,
-) : Dice() {
+class FourSideDice: Dice() {
+    override val sides: Int = 4
     override fun rollTheDice() {
         println("На кубике с четырьмя гранями выпало число ${Random.nextInt(from = 1, until = sides)}")
     }
 }
 
-class SixSideDice(
-    private val sides: Int = 4,
-) : Dice() {
+class SixSideDice : Dice() {
+    override val sides: Int = 6
     override fun rollTheDice() {
         println("На кубике с шестью гранями выпало число ${Random.nextInt(from = 1, until = sides)}")
     }
 }
 
-class EightSideDice(
-    private val sides: Int = 8,
-) : Dice() {
+class EightSideDice: Dice() {
+    fun IntRange.random(): Int {
+        val range = 1..sides
+        return start + (Math.random() * range).toInt()
+    }
+    override val sides: Int = 8
     override fun rollTheDice() {
         println("На кубике c восьмью гранями выпало число ${Random.nextInt(from = 1, until = sides)}")
     }
