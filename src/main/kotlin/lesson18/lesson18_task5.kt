@@ -52,5 +52,4 @@ fun main() {
     println()
     screen.draw(f)
 
-
 }
