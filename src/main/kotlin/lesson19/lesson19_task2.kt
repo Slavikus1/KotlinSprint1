@@ -1,23 +1,15 @@
 package lesson19
 
 enum class OnlineShop {
-    CLOTHES {
-        override fun getTextName(): String {
-            return "категория - одежда"
-        }
-    },
-    STATIONERY {
-        override fun getTextName(): String {
-            return "категория - канцелярия"
-        }
-    },
-    MISCELLANEOUS {
-        override fun getTextName(): String {
-            return "категория - разное"
-        }
-    };
+    CLOTHES,
+    STATIONERY,
+    MISCELLANEOUS;
 
-    abstract fun getTextName(): String
+    fun getCategoryName() = when(this) {
+        CLOTHES -> "Одежда"
+        STATIONERY -> "Канцелярские товары"
+        MISCELLANEOUS -> "Разное"
+    }
 }
 
 class Product(
@@ -26,7 +18,7 @@ class Product(
     val category: OnlineShop,
 ) {
     fun getProductInfo() {
-        println("Информация о товаре: имя - $name, id - $id, ${category.getTextName()}")
+        println("Информация о товаре: имя - $name, id - $id, ${category.getCategoryName()}")
     }
 }
 
