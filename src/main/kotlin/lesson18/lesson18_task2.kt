@@ -8,25 +8,24 @@ abstract class Dice {
 class FourSideDice: Dice() {
     override val sides: Int = 4
     override fun rollTheDice() {
-        println("На кубике с четырьмя гранями выпало число ${}")
+        println("На кубике с четырьмя гранями выпало число ")
     }
 }
 
 class SixSideDice : Dice() {
     override val sides: Int = 6
     override fun rollTheDice() {
-        println("На кубике с шестью гранями выпало число ${}")
+        println("На кубике с шестью гранями выпало число ")
     }
 }
 
 class EightSideDice: Dice() {
-    fun IntRange.random(): Int {
+    fun IntRange.random(){
         val range = 1..sides
-        return start + (Math.random() * range)
     }
     override val sides: Int = 8
     override fun rollTheDice() {
-        println("На кубике c восьмью гранями выпало число ${IntRange.}")
+        println("На кубике c восьмью гранями выпало число")
     }
 }
 
