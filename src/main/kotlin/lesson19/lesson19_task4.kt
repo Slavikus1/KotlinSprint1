@@ -7,31 +7,37 @@ enum class Cartridge(val power: Int) {
 }
 
 class Tank() {
-    lateinit var currentPatron: Cartridge
-    fun recharge(patron: String) {
-        when (patron.toUpperCase()) {
-            "BLUE" -> currentPatron = Cartridge.BLUE
-            "GREEN" -> currentPatron = Cartridge.GREEN
-            "RED" -> currentPatron = Cartridge.RED
-            else -> println("Такого вида патронов нет!")
+    var currentPatron: Cartridge? = null
+    fun recharge(patron: Cartridge) {
+        currentPatron = when (patron) {
+            Cartridge.BLUE -> {
+                println("Заряжаю синим патроном")
+                Cartridge.BLUE
+            }
+
+            Cartridge.GREEN -> {
+                println("Заряжаю зеленым патроном")
+                Cartridge.GREEN
+            }
+
+            Cartridge.RED -> {
+                println("Заряжаю красным патроном")
+                Cartridge.RED
+            }
         }
     }
 
     fun makeShot() {
-        println("Танк выстрелил ${currentPatron.name} патроном и нанес ${currentPatron.power} урона.")
+        println("Танк выстрелил ${currentPatron?.name} патроном и нанес ${currentPatron?.power} урона.")
     }
 }
 
 fun main() {
     val t34 = Tank()
-    t34.recharge("green")
+    t34.recharge(Cartridge.GREEN)
     t34.makeShot()
-    t34.recharge("red")
+    t34.recharge(Cartridge.RED)
     t34.makeShot()
-    t34.recharge("blue")
+    t34.recharge(Cartridge.BLUE)
     t34.makeShot()
-
-
-
-
 }
