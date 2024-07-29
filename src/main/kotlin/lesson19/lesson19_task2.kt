@@ -3,17 +3,17 @@ package lesson19
 enum class OnlineShop {
     CLOTHES {
         override fun getTextName(): String {
-            return "категория - $name"
+            return "категория - одежда"
         }
     },
     STATIONERY {
         override fun getTextName(): String {
-            return "категория - $name"
+            return "категория - канцелярия"
         }
     },
     MISCELLANEOUS {
         override fun getTextName(): String {
-            return "категория - $name"
+            return "категория - разное"
         }
     };
 
