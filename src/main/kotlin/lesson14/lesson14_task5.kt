@@ -13,12 +13,19 @@ class Chat(
 
     fun printChat() {
 
-       val groupMessages = messages.groupBy {
-            if (it is ChildMessage) {
+        val threadMap: Map<Int, List<Message>> = messages.groupBy {
+            if (it is ChildMessage)
                 it.parentMessageId
-            } else it.messageId
+            else
+                it.messageId
         }
-        groupMessages.forEach { println() }
+
+        threadMap.forEach { (_, messageList) ->
+            messageList.forEach { message ->
+                val tab = if (message is ChildMessage) "\t" else ""
+                println("$tab${message.messageId}. ${message.author}: ${message.text}")
+            }
+        }
     }
 }
 
