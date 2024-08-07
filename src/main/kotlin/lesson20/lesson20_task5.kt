@@ -9,9 +9,9 @@ class Robot {
         "Андроид это круто."
     )
     private var modifier: ((String) -> String)? = null
+    private val phrase = listOfPhrases.random()
 
     fun say() {
-        val phrase = listOfPhrases.random()
         val modePhrase = modifier?.invoke(phrase) ?: phrase
         println(modePhrase)
     }
@@ -24,6 +24,6 @@ class Robot {
 fun main() {
     val android = Robot()
     android.say()
-    android.setModifier() { phrase -> phrase.split("").reversed().joinToString { "" } }
+    android.setModifier { phrase -> phrase.replace("а", "!") }
     android.say()
 }
