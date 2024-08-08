@@ -8,11 +8,11 @@ class Robot {
         "Как я появился на свет?",
         "Андроид это круто."
     )
-    private var modifier: ((String) -> String)? = null
+    private var modifier: (String) -> String = { it }
     private val phrase = listOfPhrases.random()
 
     fun say() {
-        val modePhrase = modifier?.invoke(phrase) ?: phrase
+        val modePhrase = modifier.invoke(phrase)
         println(modePhrase)
     }
 
