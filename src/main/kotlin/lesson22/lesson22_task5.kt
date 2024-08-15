@@ -12,5 +12,8 @@ fun main() {
         "Альфа Центавра", "тройная звёздная система в созвездии Центавра",
         "6 миллиардов лет", 4.36
     )
-    println(alphaCentauri)
+    println(
+        "Имя объекта - ${alphaCentauri.component1()}, описание - ${alphaCentauri.component2()}," +
+                " возраст объекта - ${alphaCentauri.component3()}, дистанция до земли ${alphaCentauri.component4()}"
+    )
 }
