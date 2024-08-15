@@ -1,16 +1,16 @@
 package lesson22
 
 class MainScreenViewModel {
-    var mainScreenState: MainScreenState = MainScreenState()
-    fun loadData(data: String?) {
-        var newState = MainScreenState()
-        when (data) {
-            null -> newState = mainScreenState.copy(null, false)
-            "загрузка данных" -> newState = mainScreenState.copy("загрузка данных", true)
-            "наличие загруженных данных" -> newState = mainScreenState.copy("наличие загруженных данных", false)
-            else -> println("Такого вида данных нет")
-        }
-        mainScreenState = newState
+    private var mainScreenState: MainScreenState = MainScreenState()
+    fun loadData() {
+        var newState = mainScreenState.copy("отсутствие данных")
+        println("Данные - ${newState.component1()}, процесс загрузки - ${newState.component2()}")
+        Thread.sleep(1000)
+        newState = mainScreenState.copy("загрузка данных", true)
+        println("Данные - ${newState.component1()}, процесс загрузки - ${newState.component2()}")
+        Thread.sleep(1000)
+        newState = mainScreenState.copy("данные загружены", false)
+        println("Данные - ${newState.component1()}, процесс загрузки - ${newState.component2()}")
     }
 }
 
@@ -21,6 +21,5 @@ data class MainScreenState(
 
 fun main() {
     val viewModel = MainScreenViewModel()
-    viewModel.loadData("загрузка данных")
-    println(viewModel.mainScreenState)
+    viewModel.loadData()
 }
